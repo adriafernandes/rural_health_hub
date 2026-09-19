@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Health History | Rural Health Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏥 Rural Health Hub
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="facilities.html">Find Healthcare</a>
+        </div>
+
+    </nav>
+
+
+    <section class="appointment-section">
+
+        <p class="section-label">
+            HEALTH HISTORY
+        </p>
+
+        <h1>My Health History</h1>
+
+        <p>
+            View your previous consultation requests and healthcare visits.
+        </p>
+
+        <div id="historyContainer">
+
+            <p>Loading health history...</p>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        fetch("http://127.0.0.1:5000/api/health-history/1")
+
+            .then(response => response.json())
+
+            .then(history => {
+
+                const container =
+                    document.getElementById("historyContainer");
+
+                container.innerHTML = "";
+
+
+                if (history.length === 0) {
+
+                    container.innerHTML =
+                        "<p>No health history found.</p>";
+
+                    return;
+
+                }
+
+
+                history.forEach(record => {
+
+                    container.innerHTML += `
+
+                        <div>
+
+                            <h2>${record.service}</h2>
+
+                            <p>
+                                🏥 ${record.facility_name}
+                            </p>
+
+                            <p>
+                                📅 ${record.preferred_date}
+                            </p>
+
+                            <p>
+                                🕐 ${record.preferred_time}
+                            </p>
+
+                            <p>
+                                Status: ${record.status}
+                            </p>
+
+                        </div>
+
+                    `;
+
+                });
+
+            })
+
+            .catch(error => {
+
+                console.error("Error:", error);
+
+                document.getElementById("historyContainer").innerHTML =
+                    "<p>Unable to load health history.</p>";
+
+            });
+
+    </script>
+
+</body>
+
+</html>
