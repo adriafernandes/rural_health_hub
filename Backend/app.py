@@ -79,6 +79,38 @@ def create_appointment():
         "message": "Consultation request submitted successfully!"
     }), 201
 
+@app.route("/api/health-history/<int:patient_id>")
+def get_health_history(patient_id):
 
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    cursor.execute(
+        """
+        SELECT
+            appointments.id,
+            facilities.name AS facility_name,
+            appointments.service,
+            appointments.preferred_date,
+            appointments.preferred_time,
+            appointments.status
+        FROM appointments
+        JOIN facilities
+            ON appointments.facility_id = facilities.id
+        WHERE appointments.patient_id = %s
+        ORDER BY appointments.preferred_date DESC
+        """,
+        (patient_id,)
+    )
+
+    history = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    for appointment in history:
+        appointment["preferred_time"] = str(appointment["preferred_time"])
+
+    return jsonify(history)
 if __name__ == "__main__":
     app.run(debug=True)
