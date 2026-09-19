@@ -36,6 +36,7 @@ def create_appointment():
     service = data["service"]
     preferred_date = data["preferred_date"]
     preferred_time = data["preferred_time"]
+    facility_id = data["facility_id"]
 
     connection = get_db_connection()
     cursor = connection.cursor()
@@ -51,8 +52,7 @@ def create_appointment():
 
     patient_id = cursor.lastrowid
 
-    # For now, use Primary Health Centre
-    facility_id = 1
+    
 
     # Create appointment
     cursor.execute(

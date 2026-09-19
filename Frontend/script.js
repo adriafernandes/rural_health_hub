@@ -21,7 +21,10 @@ if (consultationButton) {
 
     consultationButton.addEventListener("click", function () {
 
-        window.location.href = "appointment.html";
+        const urlParams = new URLSearchParams(window.location.search);
+        const facilityId = urlParams.get("id");
+
+        window.location.href = "appointment.html?facility_id=" + facilityId;
 
     });
 
@@ -44,6 +47,8 @@ if (appointmentForm) {
         const service = document.getElementById("service").value;
         const preferred_date = document.getElementById("date").value;
         const preferred_time = document.getElementById("time").value;
+        const urlParams = new URLSearchParams(window.location.search);
+        const facility_id = urlParams.get("facility_id");
 
 
         fetch("http://127.0.0.1:5000/api/appointments", {
@@ -61,7 +66,8 @@ if (appointmentForm) {
                 phone: phone,
                 service: service,
                 preferred_date: preferred_date,
-                preferred_time: preferred_time
+                preferred_time: preferred_time,
+                facility_id: facility_id
 
             })
 
