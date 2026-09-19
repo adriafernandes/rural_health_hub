@@ -51,7 +51,7 @@ if (appointmentForm) {
         const facility_id = urlParams.get("facility_id");
 
 
-        fetch("http://127.0.0.1:5000/api/appointments", {
+        fetch("https://ruralhealthhub-production.up.railway.app/api/appointments", {
 
             method: "POST",
 

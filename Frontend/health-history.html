@@ -51,7 +51,7 @@
 
        const patientId = localStorage.getItem("patient_id");
 
-        fetch(`http://127.0.0.1:5000/api/health-history/${patientId}`)
+        fetch(`https://ruralhealthhub-production.up.railway.app/api/health-history/${patientId}`)
 
             .then(response => response.json())
 
