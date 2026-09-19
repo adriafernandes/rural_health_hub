@@ -18,61 +18,62 @@
         Discover healthcare facilities and services available in your area.
     </p>
 
-    <div>
-        <h2>Primary Health Centre</h2>
-
-        <p>📍 2.4 km away</p>
-
-        <p>Services:</p>
-
-        <ul>
-            <li>General Care</li>
-            <li>Vaccination</li>
-            <li>Basic Diagnostics</li>
-        </ul>
-        <button onclick="window.location.href='facility-details.html'">
-        View Services
-        </button>
-        
+    <div id="facilitiesContainer">
+        <p>Loading healthcare facilities...</p>
     </div>
 
 
-    <div>
-        <h2>Community Health Centre</h2>
+    <script>
 
-        <p>📍 5.1 km away</p>
+        fetch("http://127.0.0.1:5000/api/facilities")
+            .then(response => response.json())
+            .then(facilities => {
 
-        <p>Services:</p>
+                const container = document.getElementById("facilitiesContainer");
 
-        <ul>
-            <li>General Care</li>
-            <li>Maternal Care</li>
-            <li>Pharmacy</li>
-        </ul>
+                container.innerHTML = "";
 
-        <button onclick="window.location.href='facility-details.html'">
-        View Services
-        </button>
-    </div>
+                facilities.forEach(facility => {
 
+                    const services = facility.services.split(",");
 
-    <div>
-        <h2>District Hospital</h2>
+                    let servicesList = "";
 
-        <p>📍 12 km away</p>
+                    services.forEach(service => {
+                        servicesList += `<li>${service.trim()}</li>`;
+                    });
 
-        <p>Services:</p>
+                    container.innerHTML += `
+                        <div>
+                            <h2>${facility.name}</h2>
 
-        <ul>
-            <li>Emergency Care</li>
-            <li>Specialists</li>
-            <li>Diagnostics</li>
-        </ul>
+                            <p>📍 ${facility.location}</p>
 
-        <button onclick="window.location.href='facility-details.html'">
-        View Services
-        </button>
-    </div>
+                            <p>Services:</p>
+
+                            <ul>
+                                ${servicesList}
+                            </ul>
+
+                            <button onclick="window.location.href='facility-details.html'">
+                                View Services
+                            </button>
+                        </div>
+                    `;
+
+                });
+
+            })
+            .catch(error => {
+
+                console.error("Error:", error);
+
+                document.getElementById("facilitiesContainer").innerHTML =
+                    "<p>Unable to load healthcare facilities.</p>";
+
+            });
+
+    </script>
 
 </body>
 
