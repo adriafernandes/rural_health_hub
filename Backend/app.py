@@ -76,8 +76,9 @@ def create_appointment():
     connection.close()
 
     return jsonify({
-        "message": "Consultation request submitted successfully!"
-    }), 201
+    "message": "Consultation request submitted successfully!",
+    "patient_id": patient_id
+}), 201
 
 @app.route("/api/health-history/<int:patient_id>")
 def get_health_history(patient_id):

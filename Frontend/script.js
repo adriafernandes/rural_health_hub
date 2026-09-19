@@ -78,7 +78,7 @@ if (appointmentForm) {
         .then(data => {
 
             alert(data.message);
-
+            localStorage.setItem("patient_id", data.patient_id);
             appointmentForm.reset();
 
         })
