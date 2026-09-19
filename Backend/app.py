@@ -112,5 +112,25 @@ def get_health_history(patient_id):
         appointment["preferred_time"] = str(appointment["preferred_time"])
 
     return jsonify(history)
+@app.route("/api/facilities/<int:facility_id>")
+def get_facility(facility_id):
+
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    cursor.execute(
+        "SELECT * FROM facilities WHERE id = %s",
+        (facility_id,)
+    )
+
+    facility = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    if facility is None:
+        return jsonify({"error": "Facility not found"}), 404
+
+    return jsonify(facility)
 if __name__ == "__main__":
     app.run(debug=True)

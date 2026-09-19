@@ -32,50 +32,40 @@
             HEALTHCARE FACILITY
         </p>
 
-        <h1>Primary Health Centre</h1>
+        <h1 id="facilityName">Loading...</h1>
 
-        <p class="location">
-            📍 2.4 km away
+        <p class="location" id="facilityLocation">
+            📍 Loading...
         </p>
 
-        <p>
-            A healthcare facility providing basic medical
-            services to the local community.
+        <p id="facilityDescription">
+            Loading facility information...
         </p>
 
 
         <h2>Available Services</h2>
 
-        <div class="available-services">
-
-            <div class="available-service">
-                🩺
-                <h3>General Consultation</h3>
-                <p>Basic medical consultation and healthcare support.</p>
-            </div>
-
-            <div class="available-service">
-                💉
-                <h3>Vaccination</h3>
-                <p>Routine vaccination services.</p>
-            </div>
-
-            <div class="available-service">
-                🔬
-                <h3>Basic Diagnostics</h3>
-                <p>Basic health tests and diagnostic services.</p>
-            </div>
-
+        <div class="available-services" id="servicesContainer">
+            Loading services...
         </div>
 
 
         <div class="facility-info">
 
-            <p><strong>Opening Hours:</strong> 9:00 AM – 5:00 PM</p>
+            <p>
+                <strong>Opening Hours:</strong>
+                <span id="openingHours">Loading...</span>
+            </p>
 
-            <p><strong>Status:</strong> Available</p>
+            <p>
+                <strong>Status:</strong>
+                <span id="facilityStatus">Loading...</span>
+            </p>
 
-            <p><strong>Contact:</strong> 080-12345678</p>
+            <p>
+                <strong>Contact:</strong>
+                <span id="facilityContact">Loading...</span>
+            </p>
 
         </div>
 
@@ -92,6 +82,75 @@
 
 
     <script src="script.js"></script>
+
+    <script>
+
+        // Get facility ID from the URL
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const facilityId = urlParams.get("id");
+
+
+        // Get facility information from Flask
+
+        fetch(`http://127.0.0.1:5000/api/facilities/${facilityId}`)
+
+            .then(response => response.json())
+
+            .then(facility => {
+
+                document.getElementById("facilityName").textContent =
+                    facility.name;
+
+                document.getElementById("facilityLocation").textContent =
+                    "📍 " + facility.location;
+
+                document.getElementById("facilityDescription").textContent =
+                    facility.description;
+
+                document.getElementById("openingHours").textContent =
+                    facility.opening_hours;
+
+                document.getElementById("facilityStatus").textContent =
+                    facility.status;
+
+                document.getElementById("facilityContact").textContent =
+                    facility.contact;
+
+
+                const servicesContainer =
+                    document.getElementById("servicesContainer");
+
+                servicesContainer.innerHTML = "";
+
+
+                const services = facility.services.split(",");
+
+
+                services.forEach(service => {
+
+                    servicesContainer.innerHTML += `
+                        <div class="available-service">
+                            🩺
+                            <h3>${service.trim()}</h3>
+                            <p>Healthcare service available at this facility.</p>
+                        </div>
+                    `;
+
+                });
+
+            })
+
+            .catch(error => {
+
+                console.error("Error:", error);
+
+                document.getElementById("facilityName").textContent =
+                    "Unable to load facility";
+
+            });
+
+    </script>
 
 </body>
 
