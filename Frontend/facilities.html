@@ -11,13 +11,13 @@
 </head>
 
 <body>
-
+    <div class="facilities-header">
     <h1>Find Healthcare Near You</h1>
 
     <p>
         Discover healthcare facilities and services available in your area.
     </p>
-
+    </div>
     <div id="facilitiesContainer">
         <p>Loading healthcare facilities...</p>
     </div>
@@ -40,11 +40,11 @@
                     let servicesList = "";
 
                     services.forEach(service => {
-                        servicesList += `<li>${service.trim()}</li>`;
+                        servicesList += `<span class="service-item">${service.trim()}</span>`;
                     });
 
                     container.innerHTML += `
-                        <div>
+                        <div class="facility-card">
                             <h2>${facility.name}</h2>
 
                             <p>📍 ${facility.location}</p>
