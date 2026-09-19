@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f8f7;
+    color: #173b35;
+}
+
+
+/* NAVBAR */
+
+.navbar {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: white;
+    border-bottom: 1px solid #e5ece9;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #355952;
+    font-size: 15px;
+}
+
+.language-btn {
+    border: 1px solid #bdd0ca;
+    background: white;
+    padding: 9px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* HERO */
+
+.hero {
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 80px 10%;
+
+    background: #e9f3ef;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.tagline,
+.section-label {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #3b7567;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 58px;
+    line-height: 1.08;
+    margin-bottom: 25px;
+}
+
+.hero-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #547068;
+    max-width: 530px;
+}
+
+
+/* BUTTONS */
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.primary-btn,
+.secondary-btn {
+    padding: 14px 23px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary-btn {
+    border: none;
+    background: #286b5b;
+    color: white;
+}
+
+.secondary-btn {
+    border: 1px solid #286b5b;
+    background: transparent;
+    color: #286b5b;
+}
+
+
+/* HERO CARD */
+
+.hero-card {
+    width: 310px;
+    padding: 35px;
+
+    background: white;
+    border-radius: 18px;
+
+    box-shadow: 0 15px 40px rgba(25, 70, 60, 0.12);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.hero-card h3 {
+    font-size: 23px;
+    margin-bottom: 12px;
+}
+
+.hero-card p {
+    color: #60766f;
+    line-height: 1.5;
+}
+
+.availability {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #397260;
+}
+
+.dot {
+    display: inline-block;
+
+    width: 9px;
+    height: 9px;
+
+    background: #3c9273;
+    border-radius: 50%;
+
+    margin-right: 7px;
+}
+
+
+/* SERVICES */
+
+.services {
+    padding: 90px 10%;
+    background: white;
+}
+
+.services h2,
+.about h2 {
+    font-size: 40px;
+    margin-bottom: 45px;
+}
+
+.service-container {
+    display: flex;
+    gap: 25px;
+}
+
+.service-card {
+    flex: 1;
+
+    padding: 30px;
+
+    border: 1px solid #e1e9e6;
+    border-radius: 15px;
+
+    background: #fbfdfc;
+}
+
+.service-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    color: #61766f;
+    line-height: 1.6;
+}
+
+
+/* ABOUT */
+
+.about {
+    padding: 80px 10%;
+
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+
+    background: #e9f3ef;
+}
+
+.about h2 {
+    max-width: 500px;
+}
+
+.about > p {
+    max-width: 500px;
+
+    font-size: 18px;
+    line-height: 1.7;
+
+    color: #587068;
+}
+
+
+/* FOOTER */
+
+footer {
+    padding: 25px 10%;
+    background: #173b35;
+    color: white;
+    text-align: center;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        gap: 50px;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .service-container {
+        flex-direction: column;
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+}
