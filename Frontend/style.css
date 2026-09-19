@@ -278,3 +278,111 @@ footer {
     }
 
 }
+/* FACILITY DETAILS */
+
+.facility-details {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px 30px;
+}
+
+.facility-details h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.facility-details > p {
+    max-width: 650px;
+    line-height: 1.6;
+    color: #60766f;
+}
+
+.facility-details h2 {
+    margin-top: 45px;
+    margin-bottom: 25px;
+}
+
+.available-services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.available-service {
+    padding: 25px;
+    background: #e9f3ef;
+    border-radius: 12px;
+}
+
+.available-service h3 {
+    margin: 15px 0 10px;
+}
+
+.available-service p {
+    color: #60766f;
+    line-height: 1.5;
+}
+
+.facility-info {
+    margin: 35px 0;
+    padding: 25px;
+    background: #f5f8f7;
+    border-radius: 12px;
+}
+
+.facility-info p {
+    margin: 10px 0;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .available-services {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* APPOINTMENT */
+
+.appointment-section {
+    max-width: 650px;
+    margin: auto;
+    padding: 70px 30px;
+}
+
+.appointment-section h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.appointment-section > p {
+    color: #60766f;
+    margin-bottom: 35px;
+}
+
+#appointmentForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#appointmentForm label {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+#appointmentForm input,
+#appointmentForm select {
+    padding: 13px;
+
+    border: 1px solid #cbd9d5;
+    border-radius: 7px;
+
+    font-size: 15px;
+}
+
+#appointmentForm button {
+    margin-top: 25px;
+}
