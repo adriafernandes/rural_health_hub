@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Request Consultation | Rural Health Hub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            🏥 Rural Health Hub
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="facilities.html">Find Healthcare</a>
+        </div>
+
+    </nav>
+
+
+    <section class="appointment-section">
+
+        <p class="section-label">
+            CONSULTATION
+        </p>
+
+        <h1>Request a Consultation</h1>
+
+        <p>
+            Enter your details and preferred consultation information.
+        </p>
+
+
+        <form id="appointmentForm">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label for="age">
+                Age
+            </label>
+
+            <input
+                type="number"
+                id="age"
+                name="age"
+                placeholder="Enter your age"
+                required
+            >
+
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <label for="service">
+                Service Required
+            </label>
+
+            <select id="service" name="service" required>
+
+                <option value="">
+                    Select a service
+                </option>
+
+                <option value="General Consultation">
+                    General Consultation
+                </option>
+
+                <option value="Vaccination">
+                    Vaccination
+                </option>
+
+                <option value="Basic Diagnostics">
+                    Basic Diagnostics
+                </option>
+
+            </select>
+
+
+            <label for="date">
+                Preferred Date
+            </label>
+
+            <input
+                type="date"
+                id="date"
+                name="date"
+                required
+            >
+
+
+            <label for="time">
+                Preferred Time
+            </label>
+
+            <input
+                type="time"
+                id="time"
+                name="time"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="primary-btn">
+
+                Submit Request →
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
